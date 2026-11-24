@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Desktop confirmation</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width:1280px;height:900px;box-sizing:border-box;background:#F7F4EC;color:#263238;font-family:Inter,system-ui,sans-serif;font-size:16px;display:flex;flex-direction:column">
+  <header style="height:64px;background:#264E43;color:#F7F4EC;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+    <div style="width:1024px;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-family:Georgia,serif;font-weight:700;font-size:20px">STI Creative Events</span>
+      <span style="background:#D9B76E;color:#264E43;font-weight:600;font-size:12px;padding:4px 12px;border-radius:999px">Demo app · test data only</span>
+    </div>
+  </header>
+  <main style="flex:1;display:flex;justify-content:center;padding:40px 0">
+    <div style="width:1024px;display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));column-gap:40px;align-items:start">
+      <section style="display:flex;flex-direction:column;gap:24px">
+        <p style="margin:0;font-family:Georgia,serif;font-size:14px;letter-spacing:0.15em;text-transform:uppercase;color:#4F7167">Student event</p>
+        <h1 style="margin:0;font-family:Georgia,serif;font-weight:700;font-size:48px;line-height:1.1;color:#264E43">Design Meets Code Night</h1>
+        <p style="margin:0;font-size:20px;color:#4A555B">Bring a Figma file. Leave with a working app.</p>
+        <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px;font-size:14px">
+          <div style="background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 2px rgba(38,50,56,0.12)"><div style="color:#5B666C">When</div><div style="font-weight:600">Friday, December 12, 2026 · 2:00 PM</div></div>
+          <div style="background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 2px rgba(38,50,56,0.12)"><div style="color:#5B666C">Where</div><div style="font-weight:600">Room 301, sample venue</div></div>
+        </div>
+        <p style="margin:0;color:#4A555B;line-height:1.5">A hands-on evening for multimedia arts students. Meet working builders, see a design become a real application, and plan your own first build.</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;gap:12px;background:#E8ECE9;border-radius:8px;padding:12px 16px"><span style="width:48px;font-weight:600;color:#264E43">2:00</span><span>Welcome and lightning demos</span></div>
+          <div style="display:flex;gap:12px;background:#E8ECE9;border-radius:8px;padding:12px 16px"><span style="width:48px;font-weight:600;color:#264E43">2:30</span><span>Live build: Figma to working app</span></div>
+          <div style="display:flex;gap:12px;background:#E8ECE9;border-radius:8px;padding:12px 16px"><span style="width:48px;font-weight:600;color:#264E43">3:15</span><span>Hands-on clinic with mentors</span></div>
+          <div style="display:flex;gap:12px;background:#E8ECE9;border-radius:8px;padding:12px 16px"><span style="width:48px;font-weight:600;color:#264E43">4:00</span><span>Show and tell</span></div>
+        </div>
+      </section>
+      <div role="status" style="background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 12px rgba(38,50,56,0.14)">
+        <p style="margin:0;font-size:14px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#4F7167">You are in</p>
+        <h2 style="margin:8px 0 0;font-family:Georgia,serif;font-weight:700;font-size:30px;color:#264E43">Registration confirmed</h2>
+        <p style="margin:16px 0 0;color:#4A555B">Show this code at the door:</p>
+        <p style="display:inline-block;margin:8px 0 0;padding:12px 20px;border-radius:12px;background:rgba(217,183,110,0.3);font-family:ui-monospace,Menlo,monospace;font-weight:700;font-size:24px">STI-4F9A2C7E</p>
+      </div>
+    </div>
+  </main>
+  <footer style="padding:0 128px 24px;font-size:14px;color:#5B666C">Sample project for a classroom seminar. Do not enter real student information.</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":900}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

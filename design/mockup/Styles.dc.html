@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Styles and components</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width:1280px;height:820px;box-sizing:border-box;padding:48px;background:#fff;color:#263238;font-family:Inter,system-ui,sans-serif;font-size:16px;display:flex;flex-direction:column;gap:36px">
+  <h1 style="margin:0;font-family:Georgia,serif;font-weight:700;font-size:30px;color:#264E43">Styles and components</h1>
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:14px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#5B666C">Colors</h2>
+    <div style="display:grid;grid-template-columns:repeat(7, minmax(0, 1fr));gap:16px;font-size:14px">
+      <div><div style="height:72px;border-radius:12px;background:#264E43"></div><div style="margin-top:8px;font-weight:600">Forest</div><div style="color:#5B666C">#264E43</div></div>
+      <div><div style="height:72px;border-radius:12px;background:#9DBFAF"></div><div style="margin-top:8px;font-weight:600">Sage</div><div style="color:#5B666C">#9DBFAF</div></div>
+      <div><div style="height:72px;border-radius:12px;background:#F7F4EC;border:1px solid rgba(38,50,56,0.15)"></div><div style="margin-top:8px;font-weight:600">Cream</div><div style="color:#5B666C">#F7F4EC</div></div>
+      <div><div style="height:72px;border-radius:12px;background:#263238"></div><div style="margin-top:8px;font-weight:600">Charcoal</div><div style="color:#5B666C">#263238</div></div>
+      <div><div style="height:72px;border-radius:12px;background:#E8ECE9"></div><div style="margin-top:8px;font-weight:600">Mist</div><div style="color:#5B666C">#E8ECE9</div></div>
+      <div><div style="height:72px;border-radius:12px;background:#D9B76E"></div><div style="margin-top:8px;font-weight:600">Gold</div><div style="color:#5B666C">#D9B76E</div></div>
+      <div><div style="height:72px;border-radius:12px;background:#B91C1C"></div><div style="margin-top:8px;font-weight:600">Error</div><div style="color:#5B666C">#B91C1C</div></div>
+    </div>
+  </section>
+  <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:48px">
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <h2 style="margin:0;font-size:14px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#5B666C">Type</h2>
+      <div style="font-family:Georgia,serif;font-weight:700;font-size:48px;line-height:1.1;color:#264E43">Heading 48</div>
+      <div style="font-family:Georgia,serif;font-weight:700;font-size:30px;color:#264E43">Heading 30</div>
+      <div style="font-family:Georgia,serif;font-weight:700;font-size:24px;color:#264E43">Heading 24</div>
+      <div style="font-size:20px">Body 20, Inter Regular</div>
+      <div style="font-size:16px">Body 16, Inter Regular</div>
+      <div style="font-size:14px;font-weight:600">Label 14, Inter Semibold</div>
+      <div style="font-size:14px;color:#5B666C">Headings: Georgia Bold. Body: Inter. Radius: 8 inputs and buttons, 12 small cards, 16 form card.</div>
+    </section>
+    <section style="display:flex;flex-direction:column;gap:16px">
+      <h2 style="margin:0;font-size:14px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#5B666C">Components and states</h2>
+      <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:12px;font-size:12px;color:#5B666C">
+        <div style="display:flex;flex-direction:column;gap:6px"><button type="button" style="padding:12px 16px;border:0;border-radius:8px;background:#264E43;color:#F7F4EC;font:inherit;font-size:16px;font-weight:600">Register</button>Button / default</div>
+        <div style="display:flex;flex-direction:column;gap:6px"><button type="button" style="padding:12px 16px;border:0;border-radius:8px;background:#3C6157;color:#F7F4EC;font:inherit;font-size:16px;font-weight:600">Register</button>Button / hover</div>
+        <div style="display:flex;flex-direction:column;gap:6px"><button type="button" disabled style="padding:12px 16px;border:0;border-radius:8px;background:#264E43;opacity:0.6;color:#F7F4EC;font:inherit;font-size:16px;font-weight:600">Saving...</button>Button / disabled</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:12px;font-size:12px;color:#5B666C">
+        <div style="display:flex;flex-direction:column;gap:6px"><input type="text" aria-label="Input default" value="Maria Santos" style="box-sizing:border-box;width:100%;padding:10px 12px;border:1px solid rgba(38,50,56,0.3);border-radius:8px;font:inherit;font-size:16px;color:#263238">Input / default</div>
+        <div style="display:flex;flex-direction:column;gap:6px"><input type="text" aria-label="Input focus" value="Maria Santos" style="box-sizing:border-box;width:100%;padding:10px 12px;border:1px solid #264E43;border-radius:8px;box-shadow:0 0 0 3px #9DBFAF;font:inherit;font-size:16px;color:#263238">Input / focus</div>
+        <div style="display:flex;flex-direction:column;gap:6px"><input type="text" aria-label="Input error" aria-invalid="true" value="" style="box-sizing:border-box;width:100%;padding:10px 12px;border:2px solid #B91C1C;border-radius:8px;font:inherit;font-size:16px;color:#263238"><span style="font-size:14px;color:#B91C1C">Please enter your full name.</span>Input / error</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:12px;color:#5B666C">
+        <span style="background:#D9B76E;color:#264E43;font-weight:600;font-size:12px;padding:4px 12px;border-radius:999px">Demo app · test data only</span>Badge
+        <div style="display:flex;gap:12px;background:#E8ECE9;border-radius:8px;padding:12px 16px;font-size:16px;color:#263238"><span style="width:48px;font-weight:600;color:#264E43">2:00</span><span>Agenda row</span></div>
+        <div style="background:#F7F4EC;border-radius:12px;padding:12px 16px;font-size:14px;color:#263238"><div style="color:#5B666C">When</div><div style="font-weight:600">Info card</div></div>
+      </div>
+      <div style="background:#F7F4EC;border-radius:12px;padding:16px;font-size:14px;line-height:1.5;color:#263238"><strong>What the design does not say.</strong> Required fields. Valid email. One registration per email. Where data is stored. Who may see the list. What happens when the server fails.</div>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":820}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

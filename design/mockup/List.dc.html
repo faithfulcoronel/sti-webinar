@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Organizer list</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width:1280px;height:620px;box-sizing:border-box;background:#F7F4EC;color:#263238;font-family:Inter,system-ui,sans-serif;font-size:16px;display:flex;flex-direction:column">
+  <header style="height:64px;background:#264E43;color:#F7F4EC;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+    <div style="width:1024px;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-family:Georgia,serif;font-weight:700;font-size:20px">STI Creative Events</span>
+      <span style="background:#D9B76E;color:#264E43;font-weight:600;font-size:12px;padding:4px 12px;border-radius:999px">Demo app · test data only</span>
+    </div>
+  </header>
+  <main style="flex:1;display:flex;justify-content:center;padding:40px 0">
+    <div style="width:1024px;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div>
+          <h1 style="margin:0;font-family:Georgia,serif;font-weight:700;font-size:30px;color:#264E43">Registrations</h1>
+          <p style="margin:4px 0 0;font-size:14px;color:#5B666C">Signed in as organizer.test@example.com · 4 registered</p>
+        </div>
+        <button type="button" style="padding:8px 16px;border:1px solid #264E43;border-radius:8px;background:transparent;color:#264E43;font:inherit;font-size:14px;font-weight:600;cursor:pointer">Sign out</button>
+      </div>
+      <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(38,50,56,0.14)">
+        <table style="width:100%;border-collapse:collapse;text-align:left;font-size:14px">
+          <thead style="background:#E8ECE9;color:#4A555B">
+            <tr>
+              <th style="padding:12px 16px;font-weight:600">Name</th>
+              <th style="padding:12px 16px;font-weight:600">Email</th>
+              <th style="padding:12px 16px;font-weight:600">Program</th>
+              <th style="padding:12px 16px;font-weight:600">Idea</th>
+              <th style="padding:12px 16px;font-weight:600">Registered</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-top:1px solid rgba(38,50,56,0.1)">
+              <td style="padding:12px 16px;font-weight:600">Maria Santos</td>
+              <td style="padding:12px 16px">maria.test@example.com</td>
+              <td style="padding:12px 16px">Multimedia Arts</td>
+              <td style="padding:12px 16px">A portfolio site with a booking form</td>
+              <td style="padding:12px 16px">12/1/2026, 9:14:05 AM</td>
+            </tr>
+            <tr style="border-top:1px solid rgba(38,50,56,0.1)">
+              <td style="padding:12px 16px;font-weight:600">Juan Dela Cruz</td>
+              <td style="padding:12px 16px">juan.test@example.com</td>
+              <td style="padding:12px 16px">Information Technology</td>
+              <td style="padding:12px 16px">An org event tracker</td>
+              <td style="padding:12px 16px">12/1/2026, 9:32:48 AM</td>
+            </tr>
+            <tr style="border-top:1px solid rgba(38,50,56,0.1)">
+              <td style="padding:12px 16px;font-weight:600">Ana Reyes</td>
+              <td style="padding:12px 16px">ana.test@example.com</td>
+              <td style="padding:12px 16px">Multimedia Arts</td>
+              <td style="padding:12px 16px"></td>
+              <td style="padding:12px 16px">12/1/2026, 10:05:21 AM</td>
+            </tr>
+            <tr style="border-top:1px solid rgba(38,50,56,0.1)">
+              <td style="padding:12px 16px;font-weight:600">Paolo Garcia</td>
+              <td style="padding:12px 16px">paolo.test@example.com</td>
+              <td style="padding:12px 16px">Business and Management</td>
+              <td style="padding:12px 16px">A small online store for student art</td>
+              <td style="padding:12px 16px">12/2/2026, 1:47:30 PM</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <footer style="padding:0 128px 24px;font-size:14px;color:#5B666C">Sample project for a classroom seminar. Do not enter real student information.</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":620}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-11-24T04:45:00Z" },
+  "title": "STI Creative Events design mockup",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": { "x": 0, "y": 0, "w": 1280, "h": 900, "title": "1 Desktop 1280 · Register (empty)" },
+    "Errors.dc.html": { "x": 1360, "y": 0, "w": 1280, "h": 960, "title": "2 Desktop · Validation errors" },
+    "Confirmed.dc.html": { "x": 2720, "y": 0, "w": 1280, "h": 900, "title": "3 Desktop · Confirmation" },
+    "Mobile.dc.html": { "x": 0, "y": 1080, "w": 390, "h": 1480, "title": "4 Mobile 390 · Register" },
+    "SignIn.dc.html": { "x": 470, "y": 1080, "w": 1280, "h": 560, "title": "5 Organizer sign-in" },
+    "List.dc.html": { "x": 1830, "y": 1080, "w": 1280, "h": 620, "title": "6 Organizer list" },
+    "Styles.dc.html": { "x": 0, "y": 2680, "w": 1280, "h": 820, "title": "7 Styles and components" }
+  },
+  "order": ["Main.dc.html", "Errors.dc.html", "Confirmed.dc.html", "Mobile.dc.html", "SignIn.dc.html", "List.dc.html", "Styles.dc.html"],
+  "notes": {
+    "t1": { "x": 0, "y": -300, "text": "STI Creative Events: design mockup (test data only)", "kind": "title1", "maxW": 4000 }
+  },
+  "designSystems": []
+}
