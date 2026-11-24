@@ -1,5 +1,6 @@
-// The event content, taken from the design. Later this can come from the data layer.
+// The event content, taken from the design. One sample event for now.
 export const EVENT = {
+  slug: "design-meets-code-night",
   title: "Design Meets Code Night",
   tagline: "Bring a Figma file. Leave with a working app.",
   dateLabel: "Friday, December 12, 2026 · 2:00 PM",

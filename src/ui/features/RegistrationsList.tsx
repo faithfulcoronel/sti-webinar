@@ -1,0 +1,59 @@
+import type { RegistrationSummary } from "@/business/organizer";
+import { Card } from "@/ui/components/Card";
+import { SignOutButton } from "./SignOutButton";
+
+const formatDate = (iso: string) => new Date(iso).toLocaleString("en-PH", { timeZone: "Asia/Manila" });
+
+export function RegistrationsList({
+  email,
+  registrations,
+}: {
+  email: string;
+  registrations: RegistrationSummary[];
+}) {
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h1 className="font-display text-3xl font-bold text-forest">Registrations</h1>
+          <p className="mt-1 text-sm text-charcoal-muted">
+            Signed in as {email} · {registrations.length} registered
+          </p>
+        </div>
+        <SignOutButton />
+      </div>
+
+      <Card variant="table">
+        <table className="w-full min-w-[640px] text-left text-sm">
+          <thead className="bg-mist text-charcoal-soft">
+            <tr>
+              <th className="px-4 py-3 font-semibold">Name</th>
+              <th className="px-4 py-3 font-semibold">Email</th>
+              <th className="px-4 py-3 font-semibold">Program</th>
+              <th className="px-4 py-3 font-semibold">Idea</th>
+              <th className="px-4 py-3 font-semibold">Registered</th>
+            </tr>
+          </thead>
+          <tbody>
+            {registrations.length === 0 && (
+              <tr>
+                <td colSpan={5} className="px-4 py-6 text-charcoal-muted">
+                  No registrations yet.
+                </td>
+              </tr>
+            )}
+            {registrations.map((row) => (
+              <tr key={row.id} className="border-t border-charcoal/10">
+                <td className="px-4 py-3 font-semibold">{row.fullName}</td>
+                <td className="px-4 py-3">{row.email}</td>
+                <td className="px-4 py-3">{row.program}</td>
+                <td className="px-4 py-3">{row.idea}</td>
+                <td className="px-4 py-3">{formatDate(row.registeredAt)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Card>
+    </div>
+  );
+}

@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 const variants = {
   form: "rounded-form bg-white p-6 shadow-form",
   info: "rounded-card bg-white p-4 shadow-card",
+  table: "overflow-x-auto rounded-form bg-white shadow-form",
 };
 
 export function Card({
