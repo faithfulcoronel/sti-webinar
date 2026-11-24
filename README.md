@@ -22,7 +22,14 @@ How a registration travels: form (`src/ui`) -> `POST /api/register` (`src/app`) 
 
 ## Setup (once)
 1. `npm install`
-2. In Supabase, open **SQL Editor**, paste `supabase/migrations/20261201000000_registrations.sql`, and run it.
+2. Create the table with the Supabase CLI (installed by `npm install`, no global install needed):
+   ```
+   npm run db:login     # opens the browser to sign in to Supabase, once per computer
+   npm run db:link      # pick the demo project, once per project; it asks for the database password
+   npm run db:push      # shows the SQL files it will run, then asks you to confirm
+   ```
+   `npm run db:status` lists which SQL files are already applied. You can also paste
+   `supabase/migrations/20261201000000_registrations.sql` into the Supabase **SQL Editor** and run it there instead.
 3. In Supabase, open **Authentication > Users > Add user**. Create one organizer with a demo email and a strong password, and tick **Auto Confirm User**.
 4. Copy `.env.example` to `.env.local` and fill in the four values. Put the organizer's email in `ORGANIZER_EMAILS`.
 5. `npm run dev`, then open http://localhost:3000.
