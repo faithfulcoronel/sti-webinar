@@ -1,4 +1,5 @@
 import { Card } from "@/ui/components/Card";
+import { TextLink } from "@/ui/components/TextLink";
 import { SignOutButton } from "./SignOutButton";
 
 export function OrganizerNotAllowed({ email }: { email: string }) {
@@ -9,6 +10,7 @@ export function OrganizerNotAllowed({ email }: { email: string }) {
         {email} is signed in, but it is not on the organizer list, so the registrations stay hidden.
       </p>
       <SignOutButton />
+      <TextLink href="/">Back to the event page</TextLink>
     </Card>
   );
 }

@@ -3,9 +3,11 @@ import { getSignedInEmail, signInWithPassword, signOut } from "@/data/auth";
 import { listRegistrations } from "@/data/registrations";
 import { EVENT } from "./event";
 import { isOrganizerEmail } from "./organizerRules";
+import { confirmationCode } from "./registration";
 
 export type RegistrationSummary = {
   id: string;
+  code: string;
   fullName: string;
   email: string;
   program: string;
@@ -33,6 +35,8 @@ export async function getOrganizerView(): Promise<OrganizerView> {
     email,
     registrations: rows.map((row) => ({
       id: row.id,
+      // The same code the person saw after registering, so the organizer can match it at the door.
+      code: confirmationCode(row.id),
       fullName: row.full_name,
       email: row.email,
       program: row.program,

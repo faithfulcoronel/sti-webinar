@@ -6,6 +6,7 @@ import { Button } from "@/ui/components/Button";
 import { Card } from "@/ui/components/Card";
 import { FormMessage } from "@/ui/components/FormMessage";
 import { TextField } from "@/ui/components/TextField";
+import { TextLink } from "@/ui/components/TextLink";
 
 export function OrganizerSignInForm() {
   const router = useRouter();
@@ -45,6 +46,7 @@ export function OrganizerSignInForm() {
           {busy ? "Signing in..." : "Sign in"}
         </Button>
         {error && <FormMessage>{error}</FormMessage>}
+        <TextLink href="/">Back to the event page</TextLink>
       </form>
     </Card>
   );

@@ -59,7 +59,7 @@ Use test data only. Keep the Supabase **Table Editor > registrations** tab open 
 | 9 | The organizer list needs sign-in | Open http://localhost:3000/organizer in a private window | You land on the sign-in page |
 | 10 | Wrong password is refused | Sign in with the organizer email and a wrong password | "Sign-in failed. Check your details." |
 | 11 | Only emails in `ORGANIZER_EMAILS` get in | Add a second user in Supabase that is not in `ORGANIZER_EMAILS`, sign in as that user | "Sign-in failed. Check your details." |
-| 12 | The organizer sees the list | Sign in as the organizer | The Registrations table with the row from test 4 |
+| 12 | The organizer sees the list | Sign in as the organizer (the link is at the bottom of the event page) | The Registrations table with the row from test 4, showing the same code as in test 4 |
 | 13 | The check runs on every request | While signed in, remove the email from `ORGANIZER_EMAILS` in `.env.local`, restart `npm run dev`, reload `/organizer` | "Not an organizer", and no list |
 
 Test 6, skipping the browser and its checks:

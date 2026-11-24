@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Badge } from "@/ui/components/Badge";
+import { TextLink } from "@/ui/components/TextLink";
 
 // The header, content width and footer that every page shares.
 export function SiteFrame({ children }: { children: ReactNode }) {
@@ -12,8 +13,9 @@ export function SiteFrame({ children }: { children: ReactNode }) {
         </div>
       </header>
       <main className="mx-auto w-full max-w-[1024px] flex-1 px-5 py-8 md:py-10 lg:px-0">{children}</main>
-      <footer className="mx-auto w-full max-w-[1024px] px-5 pb-6 text-sm text-charcoal-muted lg:px-0">
-        Sample project for a classroom seminar. Do not enter real student information.
+      <footer className="mx-auto flex w-full max-w-[1024px] flex-wrap items-center justify-between gap-x-6 gap-y-1 px-5 pb-6 text-sm text-charcoal-muted lg:px-0">
+        <span>Sample project for a classroom seminar. Do not enter real student information.</span>
+        <TextLink href="/organizer">Organizer sign-in</TextLink>
       </footer>
     </>
   );
