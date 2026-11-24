@@ -13,3 +13,8 @@ npm install
 npm run dev
 ```
 Open http://localhost:3000.
+
+## Supabase connection
+The Supabase client helpers are in `src/utils/supabase/` (server, browser and middleware). `src/middleware.ts` keeps sessions refreshed.
+
+Copy `.env.example` to `.env.local` and fill in your project URL and publishable key. The form is not saving to the database yet.
