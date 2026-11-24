@@ -11,8 +11,8 @@
     "test": "node --experimental-strip-types --test tests/*.test.ts",
     "db:login": "supabase login",
     "db:link": "supabase link",
-    "db:status": "supabase migration list",
-    "db:push": "supabase db push"
+    "db:status": "supabase migration list --remote",
+    "db:push": "supabase db push --remote"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
