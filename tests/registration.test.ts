@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { isOrganizerEmail } from "../src/business/organizerRules.ts";
+import {
+  isOrganizer,
+  isOrganizerEmail,
+  isValidInviteCode,
+  validateOrganizerSignUp,
+} from "../src/business/organizerRules.ts";
 import {
   IDEA_MAX_LENGTH,
   confirmationCode,
@@ -79,4 +84,41 @@ test("only emails on the organizer list are organizers", () => {
   assert.equal(isOrganizerEmail(null, list), false);
   assert.equal(isOrganizerEmail("organizer@example.com", undefined), false);
   assert.equal(isOrganizerEmail("organizer@example.com", ""), false);
+});
+
+test("an organizer is on the list or signed up with the invite code", () => {
+  const list = "organizer@example.com";
+  assert.equal(isOrganizer({ email: "organizer@example.com", invited: false }, list), true);
+  assert.equal(isOrganizer({ email: "new.organizer@example.com", invited: true }, list), true);
+  assert.equal(isOrganizer({ email: "student@example.com", invited: false }, list), false);
+  assert.equal(isOrganizer(null, list), false);
+});
+
+test("the invite code must match exactly", () => {
+  assert.equal(isValidInviteCode("open-sesame-2026", "open-sesame-2026"), true);
+  assert.equal(isValidInviteCode("  open-sesame-2026 ", "open-sesame-2026"), true);
+  assert.equal(isValidInviteCode("open-sesame-2025", "open-sesame-2026"), false);
+  assert.equal(isValidInviteCode("open-sesame-2026-extra", "open-sesame-2026"), false);
+  assert.equal(isValidInviteCode("open", "open-sesame-2026"), false);
+  assert.equal(isValidInviteCode("", "open-sesame-2026"), false);
+});
+
+test("with no invite code set, nobody can sign up", () => {
+  assert.equal(isValidInviteCode("", undefined), false);
+  assert.equal(isValidInviteCode("", ""), false);
+  assert.equal(isValidInviteCode("anything", "   "), false);
+});
+
+test("organizer sign-up needs a valid email, a password of 8 or more, and a code", () => {
+  const good = { email: "New.Organizer@Example.com", password: "long-enough", inviteCode: "code" };
+  const result = validateOrganizerSignUp(good);
+  assert.equal(result.ok, true);
+  assert.equal(result.value.email, "new.organizer@example.com");
+  assert.equal(validateOrganizerSignUp({ ...good, email: "nope" }).errors.email, "That email does not look right.");
+  assert.equal(validateOrganizerSignUp({ ...good, password: "short" }).errors.password, "Use at least 8 characters.");
+  assert.equal(
+    validateOrganizerSignUp({ ...good, inviteCode: " " }).errors.inviteCode,
+    "Please enter the organizer invite code.",
+  );
+  assert.equal(validateOrganizerSignUp(null).ok, false);
 });

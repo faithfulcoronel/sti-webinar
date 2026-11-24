@@ -46,7 +46,10 @@ export function OrganizerSignInForm() {
           {busy ? "Signing in..." : "Sign in"}
         </Button>
         {error && <FormMessage>{error}</FormMessage>}
-        <TextLink href="/">Back to the event page</TextLink>
+        <div className="flex flex-wrap justify-between gap-x-4">
+          <TextLink href="/organizer/signup">Create an organizer login</TextLink>
+          <TextLink href="/">Back to the event page</TextLink>
+        </div>
       </form>
     </Card>
   );

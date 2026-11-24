@@ -31,10 +31,12 @@ How a registration travels: form (`src/ui`) -> `POST /api/register` (`src/app`) 
    `npm run db:status` lists which SQL files are already applied. You can also paste
    `supabase/migrations/20261201000000_registrations.sql` into the Supabase **SQL Editor** and run it there instead.
 3. In Supabase, open **Authentication > Users > Add user**. Create one organizer with a demo email and a strong password, and tick **Auto Confirm User**.
-4. Copy `.env.example` to `.env.local` and fill in the four values. Put the organizer's email in `ORGANIZER_EMAILS`.
+4. Copy `.env.example` to `.env.local` and fill in the values. Put the organizer's email in `ORGANIZER_EMAILS`. To let people create their own organizer login, also set `ORGANIZER_INVITE_CODE` to a long code that is hard to guess; leave it empty to keep sign-up off.
 5. `npm run dev`, then open http://localhost:3000.
 
-Never commit `.env.local` and never show it on a projector. `SUPABASE_SERVICE_ROLE_KEY` is a secret.
+Never commit `.env.local` and never show it on a projector. `SUPABASE_SERVICE_ROLE_KEY` and `ORGANIZER_INVITE_CODE` are secrets.
+
+Who is an organizer: an email in `ORGANIZER_EMAILS`, or a login created at `/organizer/signup` with the invite code. Those logins are marked as organizers in Supabase (in the user's app metadata, which only the server can write). To remove one, delete the user in Supabase under Authentication.
 
 ## Checks
 ```
@@ -61,6 +63,9 @@ Use test data only. Keep the Supabase **Table Editor > registrations** tab open 
 | 11 | Only emails in `ORGANIZER_EMAILS` get in | Add a second user in Supabase that is not in `ORGANIZER_EMAILS`, sign in as that user | "Sign-in failed. Check your details." |
 | 12 | The organizer sees the list | Sign in as the organizer (the link is at the bottom of the event page) | The Registrations table with the row from test 4, showing the same code as in test 4 |
 | 13 | The check runs on every request | While signed in, remove the email from `ORGANIZER_EMAILS` in `.env.local`, restart `npm run dev`, reload `/organizer` | "Not an organizer", and no list |
+| 14 | Organizer sign-up needs the invite code | Open `/organizer/signup`, enter a new email, a password of 8 or more characters and a wrong code | "That invite code is not correct." No new user in Supabase |
+| 15 | The right code creates an organizer | Same form, with the code from `ORGANIZER_INVITE_CODE` | You land on the Registrations list; the user appears in Supabase under Authentication |
+| 16 | With no code set, sign-up is off | Empty `ORGANIZER_INVITE_CODE` in `.env.local`, restart `npm run dev`, try to sign up with any code | "That invite code is not correct." |
 
 Test 6, skipping the browser and its checks:
 ```
