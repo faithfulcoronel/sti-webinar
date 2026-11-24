@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { displayName, validateOrganizerProfile } from "../src/business/organizerProfileRules.ts";
 import {
   isOrganizer,
   isOrganizerEmail,
@@ -121,4 +122,22 @@ test("organizer sign-up needs a valid email, a password of 8 or more, and a code
     "Please enter the organizer invite code.",
   );
   assert.equal(validateOrganizerSignUp(null).ok, false);
+});
+
+test("an organizer profile needs a name; the role is optional and short", () => {
+  assert.equal(validateOrganizerProfile({ fullName: "Ana Reyes", roleTitle: "" }).ok, true);
+  assert.equal(validateOrganizerProfile({ fullName: "", roleTitle: "" }).errors.fullName, "Please enter your full name.");
+  assert.equal(validateOrganizerProfile({ fullName: "A", roleTitle: "" }).ok, false);
+  assert.equal(
+    validateOrganizerProfile({ fullName: "Ana Reyes", roleTitle: "x".repeat(61) }).errors.roleTitle,
+    "Keep it under 60 characters.",
+  );
+  assert.equal(validateOrganizerProfile({ fullName: "  Ana   Reyes ", roleTitle: " Event  head " }).value.fullName, "Ana Reyes");
+  assert.equal(validateOrganizerProfile(null).ok, false);
+});
+
+test("an organizer is shown by name, or by email until they add one", () => {
+  assert.equal(displayName("Ana Reyes", "ana.test@example.com"), "Ana Reyes");
+  assert.equal(displayName("", "ana.test@example.com"), "ana.test@example.com");
+  assert.equal(displayName(null, "ana.test@example.com"), "ana.test@example.com");
 });

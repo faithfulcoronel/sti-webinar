@@ -12,5 +12,5 @@ export default async function OrganizerPage() {
 
   if (view.status === "signed-out") redirect("/organizer/login");
   if (view.status === "not-allowed") return <OrganizerNotAllowed email={view.email} />;
-  return <RegistrationsList email={view.email} registrations={view.registrations} />;
+  return <RegistrationsList name={view.name} registrations={view.registrations} />;
 }

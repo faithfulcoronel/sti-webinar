@@ -6,10 +6,10 @@ import { SignOutButton } from "./SignOutButton";
 const formatDate = (iso: string) => new Date(iso).toLocaleString("en-PH", { timeZone: "Asia/Manila" });
 
 export function RegistrationsList({
-  email,
+  name,
   registrations,
 }: {
-  email: string;
+  name: string;
   registrations: RegistrationSummary[];
 }) {
   return (
@@ -21,10 +21,13 @@ export function RegistrationsList({
         <div>
           <h1 className="font-display text-3xl font-bold text-forest">Registrations</h1>
           <p className="mt-1 text-sm text-charcoal-muted">
-            Signed in as {email} · {registrations.length} registered
+            Signed in as {name} · {registrations.length} registered
           </p>
         </div>
-        <SignOutButton />
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+          <TextLink href="/organizer/profile">My profile</TextLink>
+          <SignOutButton />
+        </div>
       </div>
 
       <Card variant="table">

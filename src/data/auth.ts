@@ -2,7 +2,7 @@ import "server-only";
 import { getAdminClient } from "./supabaseAdmin";
 import { getSessionClient } from "./supabaseSession";
 
-export type SignedInUser = { email: string; invited: boolean };
+export type SignedInUser = { id: string; email: string; invited: boolean; createdAt: string };
 
 // Who is signed in, or null. getUser() asks Supabase to verify the session; reading the
 // cookie alone would trust whatever the browser sent. `invited` comes from app_metadata,
@@ -12,7 +12,12 @@ export async function getSignedInUser(): Promise<SignedInUser | null> {
   const { data } = await supabase.auth.getUser();
   const user = data.user;
   if (!user?.email) return null;
-  return { email: user.email, invited: user.app_metadata?.organizer === true };
+  return {
+    id: user.id,
+    email: user.email,
+    invited: user.app_metadata?.organizer === true,
+    createdAt: user.created_at,
+  };
 }
 
 export async function signInWithPassword(email: string, password: string): Promise<boolean> {

@@ -1,7 +1,9 @@
 import "server-only";
 import { createInvitedOrganizer, getSignedInUser, signInWithPassword, signOut } from "@/data/auth";
+import { getOrganizerProfile } from "@/data/organizerProfiles";
 import { listRegistrations } from "@/data/registrations";
 import { EVENT } from "./event";
+import { displayName } from "./organizerProfileRules";
 import {
   isOrganizer,
   isValidInviteCode,
@@ -23,7 +25,7 @@ export type RegistrationSummary = {
 export type OrganizerView =
   | { status: "signed-out" }
   | { status: "not-allowed"; email: string }
-  | { status: "ok"; email: string; registrations: RegistrationSummary[] };
+  | { status: "ok"; name: string; registrations: RegistrationSummary[] };
 
 const allowedList = () => process.env.ORGANIZER_EMAILS;
 
@@ -34,10 +36,10 @@ export async function getOrganizerView(): Promise<OrganizerView> {
   if (!user) return { status: "signed-out" };
   if (!isOrganizer(user, allowedList())) return { status: "not-allowed", email: user.email };
 
-  const rows = await listRegistrations(EVENT.slug);
+  const [rows, profile] = await Promise.all([listRegistrations(EVENT.slug), getOrganizerProfile(user.id)]);
   return {
     status: "ok",
-    email: user.email,
+    name: displayName(profile?.full_name, user.email),
     registrations: rows.map((row) => ({
       id: row.id,
       // The same code the person saw after registering, so the organizer can match it at the door.

@@ -14,7 +14,7 @@ Three layers that depend one way only: UI -> business -> data. `npm run lint` fa
 | `src/ui/features` | Screen parts built from those components (EventDetails, RegistrationForm, the organizer screens). |
 | `src/business` | The rules: what is valid, who is an organizer, what happens when someone registers. |
 | `src/data` | The only code that talks to Supabase. |
-| `supabase/migrations` | The SQL for the `registrations` table. |
+| `supabase/migrations` | The SQL for the `registrations` and `organizer_profiles` tables. |
 | `tests` | Unit tests for the rules. |
 | `design` | The mock design and its spec. |
 
@@ -22,14 +22,14 @@ How a registration travels: form (`src/ui`) -> `POST /api/register` (`src/app`) 
 
 ## Setup (once)
 1. `npm install`
-2. Create the table with the Supabase CLI (installed by `npm install`, no global install needed):
+2. Create the tables (`registrations` and `organizer_profiles`) with the Supabase CLI (installed by `npm install`, no global install needed):
    ```
    npm run db:login     # opens the browser to sign in to Supabase, once per computer
    npm run db:link      # pick the demo project, once per project; it asks for the database password
    npm run db:push      # shows the SQL files it will run, then asks you to confirm
    ```
    `npm run db:status` lists which SQL files are already applied. You can also paste
-   `supabase/migrations/20261201000000_registrations.sql` into the Supabase **SQL Editor** and run it there instead.
+   each file in `supabase/migrations/` into the Supabase **SQL Editor**, oldest first, and run it there instead.
 3. In Supabase, open **Authentication > Users > Add user**. Create one organizer with a demo email and a strong password, and tick **Auto Confirm User**.
 4. Copy `.env.example` to `.env.local` and fill in the values. Put the organizer's email in `ORGANIZER_EMAILS`. To let people create their own organizer login, also set `ORGANIZER_INVITE_CODE` to a long code that is hard to guess; leave it empty to keep sign-up off.
 5. `npm run dev`, then open http://localhost:3000.
@@ -66,6 +66,9 @@ Use test data only. Keep the Supabase **Table Editor > registrations** tab open 
 | 14 | Organizer sign-up needs the invite code | Open `/organizer/signup`, enter a new email, a password of 8 or more characters and a wrong code | "That invite code is not correct." No new user in Supabase |
 | 15 | The right code creates an organizer | Same form, with the code from `ORGANIZER_INVITE_CODE` | You land on the Registrations list; the user appears in Supabase under Authentication |
 | 16 | With no code set, sign-up is off | Empty `ORGANIZER_INVITE_CODE` in `.env.local`, restart `npm run dev`, try to sign up with any code | "That invite code is not correct." |
+| 17 | An organizer has a profile | Sign in, click **My profile**, enter a name and a role, **Save profile** | "Profile saved." A row appears in the `organizer_profiles` table, and the list page says "Signed in as" your name |
+| 18 | A profile needs a name | Clear the name, **Save profile** | "Please enter your full name." The row is unchanged |
+| 19 | A profile needs sign-in | Sign out, then open `/organizer/profile` | You land on the sign-in page |
 
 Test 6, skipping the browser and its checks:
 ```
