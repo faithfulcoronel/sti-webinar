@@ -1,4 +1,5 @@
-import { EVENT } from "@/lib/event";
+import { EVENT } from "@/business/event";
+import { Card } from "@/ui/components/Card";
 
 export function EventDetails() {
   return (
@@ -10,23 +11,23 @@ export function EventDetails() {
       <p className="text-xl text-charcoal-soft">{EVENT.tagline}</p>
 
       <dl className="grid grid-cols-2 gap-3 text-sm">
-        <div className="rounded-card bg-white p-4 shadow-card">
+        <Card>
           <dt className="text-charcoal-muted">When</dt>
           <dd className="font-semibold">{EVENT.dateLabel}</dd>
-        </div>
-        <div className="rounded-card bg-white p-4 shadow-card">
+        </Card>
+        <Card>
           <dt className="text-charcoal-muted">Where</dt>
           <dd className="font-semibold">{EVENT.venue}</dd>
-        </div>
+        </Card>
       </dl>
 
       <p className="leading-normal text-charcoal-soft">{EVENT.about}</p>
 
       <ol className="flex flex-col gap-2">
-        {EVENT.agenda.map((a) => (
-          <li key={a.time} className="flex gap-3 rounded-input bg-mist px-4 py-3">
-            <span className="w-12 shrink-0 font-semibold text-forest">{a.time}</span>
-            <span>{a.item}</span>
+        {EVENT.agenda.map((entry) => (
+          <li key={entry.time} className="flex gap-3 rounded-input bg-mist px-4 py-3">
+            <span className="w-12 shrink-0 font-semibold text-forest">{entry.time}</span>
+            <span>{entry.item}</span>
           </li>
         ))}
       </ol>

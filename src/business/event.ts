@@ -1,4 +1,4 @@
-// Sample event content, taken from the design. No backend yet.
+// The event content, taken from the design. Later this can come from the data layer.
 export const EVENT = {
   title: "Design Meets Code Night",
   tagline: "Bring a Figma file. Leave with a working app.",
@@ -13,10 +13,3 @@ export const EVENT = {
     { time: "4:00", item: "Show and tell" },
   ],
 } as const;
-
-export const PROGRAM_OPTIONS = [
-  "Multimedia Arts",
-  "Information Technology",
-  "Business and Management",
-  "Other",
-] as const;

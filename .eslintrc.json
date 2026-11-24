@@ -1,1 +1,37 @@
-{ "extends": ["next/core-web-vitals", "next/typescript"] }
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "overrides": [
+    {
+      "files": ["src/business/**"],
+      "rules": {
+        "no-restricted-imports": ["error", { "patterns": [
+          { "group": ["@/ui/*", "@/app/*", "@/data/*", "react", "next/*"], "message": "Business rules must not depend on the UI, pages or the database." }
+        ] }]
+      }
+    },
+    {
+      "files": ["src/data/**"],
+      "rules": {
+        "no-restricted-imports": ["error", { "patterns": [
+          { "group": ["@/ui/*", "@/app/*", "@/business/*"], "message": "The data layer must not depend on the layers above it." }
+        ] }]
+      }
+    },
+    {
+      "files": ["src/ui/**"],
+      "rules": {
+        "no-restricted-imports": ["error", { "patterns": [
+          { "group": ["@/data/*", "@/app/*"], "message": "UI talks to the business layer, never straight to the database." }
+        ] }]
+      }
+    },
+    {
+      "files": ["src/ui/components/**"],
+      "rules": {
+        "no-restricted-imports": ["error", { "patterns": [
+          { "group": ["@/data/*", "@/app/*", "@/business/*", "@/ui/features/*"], "message": "Reusable components know nothing about the event or its rules." }
+        ] }]
+      }
+    }
+  ]
+}

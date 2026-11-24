@@ -1,5 +1,5 @@
-import { EventDetails } from "@/components/EventDetails";
-import { RegistrationForm } from "@/components/RegistrationForm";
+import { EventDetails } from "@/ui/features/EventDetails";
+import { RegistrationForm } from "@/ui/features/RegistrationForm";
 
 export default function HomePage() {
   return (
